@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>巡更系统</title>
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/public.css" />
+	</head>
+	<body>
+		<div id="main-frame">
+			<div id="frame-top">
+				<div class="top-logo">
+					<div class="logo fl"><img src="images/logo.png"></div>
+					<div class="title fl">巡更系统</div>	
+				</div>
+				<div class="actionbar">
+					<div class="personnel fl">
+						<img src="images/head_portrait.png">
+						<span class="name">超级管理员</span>
+					</div>
+					<div class="tid act-list fl">
+						<a href="javascript:;">
+							<div class="new">
+								<img src="images/icons/news.png">消息
+								<span class="tips">99</span>
+							</div>
+						</a>
+					</div>
+					<div class="set-up act-list fl">
+						<a href="javascript:;">
+							<img src="images/icons/set_up.png">设置
+						</a>
+					</div>
+					<div class="sign-out act-list fl">
+						<a href="javascript:;">
+							<img src="images/icons/login_out.png">退出
+						</a>
+					</div>
+				</div>
+			</div>
+			<div id="frame-left">
+				<div class="menubar">
+					<div class="menu-item open">
+						<a href="javascript:;" class="menu curr" target="mainFrame">
+							<img src="images/icons/menu_admin.png">
+							<span>巡更设置</span>	
+							<i></i>
+						</a>
+						<div class="submenu-box">
+							<a href="route_setting.html" class="submenu  curr" target="mainFrame">
+								路线设置
+							</a>
+							<a href="time_setting.html" class="submenu" target="mainFrame">
+								班次设置
+							</a>
+							<!-- <a href="javascript:;" class="submenu" target="mainFrame">
+								地图预览
+							</a> -->
+						</div>
+					</div>
+					<div class="menu-item">
+						<a href="time_patrol.html" class="menu" target="mainFrame">
+							<img src="images/icons/menu_admin.png">
+							<span>人员设置</span>	
+						</a>
+						
+					</div>
+					<!-- time_patrol.html -->
+					<div class="menu-item">
+						<a href="time_patrol.html" class="menu" target="mainFrame">
+							<img src="images/icons/menu_admin.png">
+							<span>事件设置</span>	
+						</a>
+						
+					</div>
+					<div class="menu-item">
+						<a href="time_patrol.html" class="menu" target="mainFrame">
+							<img src="images/icons/menu_admin.png">
+							<span>实时巡更</span>	
+						</a>
+						
+					</div>
+					<div class="menu-item">
+						<a href="patrol_record.html" class="menu" target="mainFrame">
+							<img src="images/icons/menu_admin.png">
+							<span>巡更记录</span>	
+						</a>
+					</div>
+				</div>
+			</div>
+			<div id="frame-container">
+				<iframe frameborder="no" name="mainFrame" id="mainFrame" scrolling="auto" src="route_setting.html" width="100%" height="100%">
+	               	您的浏览器不支持嵌入式框架，或者当前配置为不显示嵌入式框架。
+	           </iframe>
+			</div>
+		</div>
+	
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script src="js/layer/layer.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript">
+			$(function(){
+  				
+				//左侧切换
+				$(document).on("click",".menubar .menu-item a",function(){
+					$(this).addClass("curr").siblings().removeClass("curr");
+					$(this).parent().siblings().find("a").removeClass("curr");
+					$(this).parent(".submenu-box").siblings("a").removeClass("curr");
+					$(this).parents(".menu-item").siblings().find("a").removeClass("curr");
+					$(this).siblings().find("a").removeClass("curr");
+				});
+				//折叠
+				$(document).on("click",".menu-item i",function(){
+					if($(this).parents(".menu-item").hasClass("open")){
+						$(this).parents(".menu-item").removeClass("open");
+					}else{
+						$(this).parents(".menu-item").addClass("open");
+					};
+				});
+
+
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,148 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>时间设置</title>
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/public.css" />
+		
+	</head>
+	<body>
+		<div id="cme-main">
+			<div class="main-content">
+				<div class="main-tab">
+					<div class="label fl curr"><a href="javascript:;">时间设置</a></div>
+					<div class="btn-box fr">
+						<div class="subbtn fl"><a href="time_setting_add.html" class="blue">新增</a></div>
+						<div class="subbtn fl"><a href="javascript:;" class="orange">批量删除</a></div>
+					</div>
+				</div>
+				
+				
+				<div class="main-table">
+					<!--查询条件-->
+					<div class="search-box main-form fl">
+						<div class="form-term fl clearfix">
+							<div class="lable"><span></span>选择路线：</div>
+							<div class="control clearfix">
+								<select>
+									<option>路线1</option>
+									<option>路线2</option>
+									<option>路线3</option>
+									<option>路线4</option>
+									<option>路线5</option>
+								</select>
+							</div>								
+						</div>
+						<div class="btn fl">
+							<a href="javascript:;">搜索</a>
+						</div>
+					</div>
+					<!--查询条件-->
+					<table class="grade">
+                            <tbody>
+                            <tr>
+								<td width="80"><span class="checkbox" id="selectAll" style="float: none;">全选</span></td>
+								<td width="100" >路线</td>
+								<td width="100">班次</td>
+								<td width="100">开始时间</td>
+								<td width="100">时间误差（分钟）</td>
+								<td width="100">操作</td>
+							</tr>
+							<tr>
+								<td class="center"><span class="checkbox" style="float: none;"></span></td>
+								<td class="center">路线1</td>
+								<td>班次1</td>
+								<td class="center">14:30</td>
+								<td class="center">10</td>
+								<td class="center operation-box">
+									<a href="time_setting_edit.html" class="edit">编辑</a>
+									<a href="javascript:;" class="delete">删除</a>
+								</td>
+							</tr>
+                            <tr>
+								<td class="center"><span class="checkbox" style="float: none;"></span></td>
+								<td class="center">路线1</td>
+								<td class="center">班次2</td>
+								<td class="center">14:30</td>
+								<td class="center">10</td>
+								<td class="center operation-box">
+									<a href="time_setting_edit.html" class="edit">编辑</a>
+									<a href="javascript:;" class="delete">删除</a>
+								</td>
+							</tr>
+                            <tr>
+								<td class="center"><span class="checkbox" style="float: none;"></span></td>
+								<td class="center">路线1</td>
+								<td class="center">班次3</td>
+								<td class="center">14:30</td>
+								<td class="center">10</td>
+								<td class="center operation-box">
+									<a href="time_setting_edit.html" class="edit">编辑</a>
+									<a href="javascript:;" class="delete">删除</a>
+								</td>
+							</tr>
+                            <tr>
+								<td class="center"><span class="checkbox" style="float: none;"></span></td>
+								<td class="center">路线1</td>
+								<td class="center">班次4</td>
+								<td class="center">14:30</td>
+								<td class="center">10</td>
+								<td class="center operation-box">
+									<a href="time_setting_edit.html" class="edit">编辑</a>
+									<a href="javascript:;" class="delete">删除</a>
+								</td>
+							</tr>
+                            <tr>
+								<td class="center"><span class="checkbox" style="float: none;"></span></td>
+								<td class="center">路线1</td>
+								<td class="center">班次5</td>
+								<td class="center">14:30</td>
+								<td class="center">10</td>
+								<td class="center operation-box">
+									<a href="time_setting_edit.html" class="edit">编辑</a>
+									<a href="javascript:;" class="delete">删除</a>
+								</td>
+							</tr>
+                            </tbody>
+                        </table>
+                    
+                    
+				</div>
+				
+			</div>
+			
+		</div>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+	    <script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript">
+    $(function () {
+		
+		//复选
+		$(document).on('click','.checkbox',function(){
+			if($(this).parents('tr').index() == 0){//全选
+				if($(this).hasClass('curr')){
+					$(this).removeClass('curr');
+					$(this).parents('tr').nextAll().each(function(){
+						$(this).find('span.checkbox').removeClass('curr');
+					})
+				}else{
+					$(this).addClass('curr');
+					$(this).parents('tr').nextAll().each(function(){
+						$(this).find('span.checkbox').addClass('curr');
+					})
+				}
+			}else{
+				if($(this).hasClass('curr')){
+					$(this).removeClass('curr');
+					$('#selectAll').removeClass('curr');
+				}else{
+					$(this).addClass('curr');
+				}
+			}
+		})
+		
+    });
+</script>	
+	</body>
+</html>

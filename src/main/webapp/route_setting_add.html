@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- <meta charset="UTF-8"> -->
+		<meta http-equiv="content-type" content="txt/html; charset=utf-8" />
+		<title>路线设置-新增</title>
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/public.css" />
+		<link rel="stylesheet" href="css/list_style.css" />
+		<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript">
+		      function dianji(){
+		    	  var routeName=$("#routeadd").val();
+		    	  alert("routeName=="+routeName)
+		    	    $.ajax({
+		    	    	  url:"http://localhost:8091/Route/addRoute",
+		    	    	  type:"POST",
+		    	    	  data:{
+		    	    		   "routeName":routeName,
+		    	    		   "callback":1
+		    	    	  },
+		    	    	  dataType:"json",
+		    	    	  success:function(data){
+		    	    		  console.log(data);
+		    	    		  alert("nihao");
+		    	    	  }
+		    	    })
+		      }
+		</script>
+		
+		<!-- JS代码 -->
+<!-- 		<script type="text/javascript">
+		//var url="http://192.168.1.140:8091/sy/route/routeAdd";
+		
+			$("#sure").click(function(){
+						console.log("是否进行");
+				        var routeName=$("#routeadd").val();
+				         
+	                    		 /* 添加班次的方法 */
+	 							$.ajax({
+	 								url:"http://192.168.1.140:8091/sy/route/routeAdd",
+	 								type:"post",
+	 								data:{
+	 									"routeName":routeName,
+	 									"callback":1
+	 						},
+	 					dataType:"json",
+	 				 success:function(data){
+	 				if(data==callback){
+	 					    layer.msg('修改成功', {icon: 6,time:2000,shade: [0.5,'#333333']},function(){
+	 					   }); 
+	 					}else{
+	 					    layer.msg('亲!此班次正在使用中不能修改', {icon: 5,time:2000,shade: [0.5,'#333333']},function(){
+	 						//parent.location.href="work/queryBakkiData";
+	 					       }); 
+	 						}
+	 					}
+	 				})	            
+	    });					
+		</script> -->
+		
+	</head>
+	<body>
+		<div id="cme-main">
+			<div class="main-content">
+				<div class="main-tab">
+					<div class="label fl curr"><a href="javascript:;">新增</a></div>
+					
+				</div>
+				<div class="main-form">	
+					<!--input开始-->
+					<div class="form-term clearfix"> 
+						<div class="lable"><span>*</span>路线名称：</div>
+						<div class="control">
+							<input type="text" id="routeadd" name="routeName" placeholder="" class="input">
+							<input type="button" id="sure"  onclick="dianji()" value="确定">
+						</div>
+					</div>
+					<!--input结束-->
+					<!--巡更点操作开始-->
+					<div class="patrol">
+						<div class="form-term clearfix ">
+							<div class="lable"><span>*</span>选择巡更点：</div>
+							<div class="control clearfix">
+								<select name="" id="typeName">
+									
+								</select>
+							</div>								
+						</div>
+						<i class="triangle"><img src="images/icons/triangle_tips.png"></i>
+						<div class="tip">
+							
+							<!--radio开始-->
+							<div class="write clearfix" id="radio">
+								<span>进出方向：</span>
+								<span class="radio">进</span>
+								<span class="radio curr">出</span>
+							</div>
+							<div class="write">
+								距离下一个巡更点时间间隔：
+								<input type="text" placeholder="" class="input ">
+								分钟
+							</div>
+							<!--radio结束-->
+						</div>
+						<div class="operation">
+							<a href="javascript:;" class="add operation-btn fl" title="新增"><img src="images/icons/add.png"></a>
+							<a href="javascript:;" class="delete operation-btn fl" title="删除"><img src="images/icons/remove.png"></a>
+						</div>
+					</div>
+					<div class="patrol">
+						<div class="form-term clearfix ">
+							<div class="lable"><span>*</span>选择巡更点：</div>
+							<div class="control clearfix">
+								<select name="" id="typeName">									
+								</select>
+							</div>								
+						</div>
+						<i class="triangle"><img src="images/icons/triangle_tips.png"></i>
+						<div class="tip">
+							<!--radio开始-->
+							<div class="write clearfix" id="radio">
+								<span>进出方向：</span>
+								<span class="radio">进</span>
+								<span class="radio curr">出</span>
+							</div>
+							<div class="write">
+								距离下一个巡更点时间间隔：
+								<input type="text" placeholder="" class="input ">
+								分钟
+							</div>
+							<!--radio结束-->
+						</div>
+						<div class="operation">
+							<a href="javascript:;" class="add operation-btn fl" title="新增"><img src="images/icons/add.png"></a>
+							<a href="javascript:;" class="delete operation-btn fl" title="删除"><img src="images/icons/remove.png"></a>
+						</div>
+					</div>
+					<!--巡更点操作结束-->
+					
+				</div>
+				<!--form-btn开始-->
+				<div class="form-btn">
+					<a href="route_setting.html">确定</a>
+					<a href="route_setting.html" class="orange">取消</a>
+				</div>
+				<!--form-btn结束-->
+				
+				
+			</div>  
+			
+		</div>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+	    <script type="text/javascript" src="js/common.js"></script>
+	    <script>
+			$(function(){
+			 $.ajax({ 
+			  url:"http://localhost:8091/Route/addRoute",
+			  type:"POST",
+			  dataType:"json",
+			  success:function(data){
+			      var pro = $('#typeName');
+			      var options = '<option value ="0">请选择</option>';
+			      $(data).each(function() {
+			          options += '<option>' + this.HolderName + '</option>';
+			      });
+			      pro.append(options);
+			  }
+			 });<!--以上是员工请假时显示指定审批人的姓名,以供员工选择-->
+			});
+</script> 
+			
+	</body>
+</html>

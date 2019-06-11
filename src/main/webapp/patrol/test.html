@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <input type="text" id="file">
+    <button id="sub">确定</button>
+    <script>
+        $("#sub").click(function() {
+
+            var routeName = $("#file").val()
+            console.log(routeName)
+            $.ajax({
+
+                type: "GET", //为post请求
+                url: "http://192.168.1.140:8091/Route/addRoute",
+                data: {
+                    "routeName": routeName,
+                    "callback": "str"
+                },
+                processData: false,
+                contentType: false,
+                crossDomain: true,
+                dataType: "jsonp",
+                error: function(request) { //请求失败之后的操作
+                    return;
+                },
+                success: function(data) { //请求成功之后的操作
+                    console.log(data);
+                }
+            })
+
+
+
+
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>路线设置-新增</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/public.css" />
+    <link rel="stylesheet" href="css/list_style.css" />
+</head>
+
+<body>
+    <div id="cme-main">
+        <div class="main-content">
+            <div class="main-tab">
+                <div class="label fl curr"><a href="javascript:;">新增</a></div>
+
+            </div>
+            <div class="main-form">
+                <!--input开始-->
+                <div class="form-term clearfix">
+                    <div class="lable"><span></span>路线名称：</div>
+                    <div class="control">
+                        <!-- <div class="input-unedit">
+                            <span class="info-text">路线1</span>
+                        </div> -->
+                        <input type="text" id="file" name="routeName">
+                        <button id="sub">确定</button>
+                    </div>
+                </div>
+                <!--input结束-->
+                <!--巡更点操作开始-->
+                <div class="patrol">
+                    <div class="form-term clearfix ">
+                        <div class="xgm"><span>巡更点名称：</span><input type="text" class="xgm-n"></div>
+                        <div class="lable"><span>*</span>选择巡更点：</div>
+                        <div class="control clearfix">
+                            <select class="sel">
+									<option>巡更点1</option>
+									<option>巡更点2</option>
+									<option>巡更点3</option>
+									<option>巡更点4</option>
+									<option>巡更点5</option>
+								</select>
+                        </div>
+                    </div>
+                    <i class="triangle"><img src="images/icons/triangle_tips.png"></i>
+                    <div class="tip">
+
+                        <!--radio开始-->
+                        <div class="write clearfix" id="radio">
+                            <span>进出方向：</span>
+                            <span class="radio ra">进</span>
+                            <span class="radio curr">出</span>
+                        </div>
+                        <div class="write">
+                            距离下一个巡更点时间间隔：
+                            <input type="text" placeholder="" class="input write-n"> 分钟
+                        </div>
+                        <!--radio结束-->
+                    </div>
+                    <div class="operation" id="opera">
+                        <a href="javascript:;" class="add operation-btn fl" title="新增"><img src="images/icons/add.png"></a>
+                        <a href="javascript:;" class="delete operation-btn fl" title="删除"><img src="images/icons/remove.png"></a>
+                    </div>
+                </div>
+
+                <!--巡更点操作结束-->
+
+            </div>
+            <!--form-btn开始-->
+            <div class="form-btn">
+                <a href="javascript:;" id="btn-y">确定</a>
+                <a href="route_setting.html" class="orange">取消</a>
+            </div>
+            <!--form-btn结束-->
+
+
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script>
+        // $.ajax({
+        //         type: "GET",
+        //         url: "http://192.168.1.140:8091/Device/findDoorUnitName",
+        //         dataType: "json",
+        //         success: function(data) {
+        //             console.log(data)
+        //         },
+        //         error: function(request) {
+        //             console.log("error")
+        //         }
+        //     })
+
+        // 路线名称确定
+        $("#sub").click(function() {
+            console.log("run")
+            var routeName = $("#file").val()
+            console.log(routeName)
+                // $.ajax({
+                //     type: "GET",
+                //     url: "http://192.168.1.147:8091/Route/addRoute",
+                //     dataType: "json",
+                //     data: {
+                //         "routeName": routeName,
+                //         "callback": "str"
+                //     },
+                //     success: function(data) { //请求成功之后的操作
+                //         console.log(data);
+                //     },
+                //     error: function(request) { //请求失败之后的操作
+                //         console.log("error")
+                //     }
+                // })
+
+            $.ajax({
+                type: "GET",
+                url: "http://192.168.1.147:8091/Route/selectIdByName",
+                // dataType: "json",
+                data: {
+                    "routeName": routeName,
+                    "callback": "str"
+
+                },
+                success: function(data) { //请求成功之后的操作
+                    console.log(data);
+                },
+                error: function(request) { //请求失败之后的操作
+                    console.log("error")
+                }
+            })
+        })
+
+
+        // 添加
+        $(document).on("click", ".add", function() {
+
+
+                var $txt = $("<div class='patrol'><div class='form-term clearfix '><div class='xgm'><span>巡更点名称：</span><input type='text' class='xgm-n'></div><div class='lable'><span>*</span>选择巡更点：</div><div class='control clearfix'><select class='sel'><option>巡更点1</option><option>巡更点2</option><option>巡更点3</option><option>巡更点4</option><option>巡更点5</option></select></div><i class='triangle'><img src='images/icons/triangle_tips.png'></i></div></div>")
+                var $txt2 = $("<div class='tip'><div class='write clearfix' id='radio'><span>进出方向：</span><span class='radio ra'>进</span><span class='radio curr'>出</span></div><div class='write'>距离下一个巡更点时间间隔：<input type='text' class='input write-n'> 分钟</div></div>")
+                var $txt3 = $("<div class='operation'><a href='javascript:;' class='add operation-btn fl' title='新增' id='add'><img src='images/icons/add.png'></a><a href='javascript:;' class='delete operation-btn fl' title='删除'><img src='images/icons/remove.png'></a></div>")
+
+                $txt.append($txt2)
+                $txt.append($txt3)
+                $(".main-form").append($txt)
+
+            })
+            // 删除
+        $(document).on("click", ".delete", function() {
+            $(this).parent().parent().remove();
+        })
+
+
+        // 单选按钮  进出方向
+        $(document).on("click", ".radio", function() {
+            $(this).addClass("curr").siblings().removeClass("curr")
+        })
+
+
+        //确定 
+        $(document).on("click", "#btn-y", function() {
+            console.log($(".patrol").length);
+            var arr = [];
+            for (var i = 0; i < $(".patrol").length; i++) {
+                console.log($("#radio .curr").eq(i).hasClass("ra"))
+                var obj = {};
+                obj.NodePreId = i;
+                obj.NodeName = $(".xgm-n").eq(i).val()
+                obj.NodeTimeInterval = $(".write-n").eq(i).val()
+                obj.DoorName = $(".sel option:selected").eq(i).text()
+                if ($("#radio .curr").eq(i).hasClass("ra")) {
+                    obj.NodeDirection = 0 //进
+                } else {
+                    obj.NodeDirection = 1 //出
+                }
+                arr.push(obj)
+            }
+            // arr = JSON.stringify(arr)
+            console.log(arr)
+
+
+
+            $.ajax({
+                type: "GET",
+                url: "http://192.168.1.147:8091/routeNode/addNodeFromEnd",
+                data: {
+                    "list": arr,
+                    "callback": "str"
+                },
+                success: function(data) {
+                    console.log("success")
+                },
+                error: function(data) {
+                    console.log("error")
+                }
+            })
+
+        })
+    </script>
+
+</body>
+
+</html>

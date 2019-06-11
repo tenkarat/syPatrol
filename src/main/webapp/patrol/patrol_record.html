@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>巡更记录</title>
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/public.css" />
+		<link rel="stylesheet" href="css/list_style.css" />
+	</head>
+	<body>
+		<div id="cme-main">
+			<div class="main-content">
+				<div class="main-tab">
+					<div class="label fl curr"><a href="javascript:;">巡更记录</a></div>
+				</div>
+				
+				<div class="main-table">
+					<!--查询条件-->
+					<div class="search-box main-form fl">
+						<div class="form-term fl clearfix">
+							<div class="lable"><span></span>搜索条件：</div>
+							<div class="control clearfix">
+								<select>
+									<option>姓名</option>
+									<option>路线</option>
+									<option>巡更点</option>
+								</select>
+							</div>								
+						</div>
+						<div class="form-term fl clearfix">
+							<div class="lable"><span></span>搜索内容：</div>
+							<div class="control clearfix">
+								<input type="text" placeholder="" class="input">
+							</div>								
+						</div>
+						<div class="btn fl">
+							<a href="javascript:;">搜索</a>
+						</div>
+					</div>
+					<!--查询条件-->
+					<table class="grade">
+                            <tbody>
+                            <tr>
+								<td width="40">序号</td>
+								<td width="100">姓名</td>
+								<td width="100">巡更点</td>
+								<td width="100">打卡时间</td>
+								<td width="100">巡更状态</td>
+							</tr>
+							<tr>
+								<td class="center">1</td>
+								<td>小明</td>
+								<td class="center">巡更点1</td>
+								<td class="center">2019-04-15 16:45</td>
+								<td class="center">
+									正常
+								</td>
+							</tr>
+                            <tr>
+								<td class="center">2</td>
+								<td>小明</td>
+								<td class="center">巡更点2</td>
+								<td class="center">2019-04-15 16:45</td>
+								<td class="center">
+									正常
+								</td>
+							</tr>
+                            <tr>
+								<td class="center">3</td>
+								<td>小明</td>
+								<td class="center">巡更点3</td>
+								<td class="center">2019-04-15 16:45</td>
+								<td class="center">
+									正常
+								</td>
+							</tr>
+                            </tbody>
+                        </table>
+                    <div class="pages">
+						<a href="javascript:;">首页</a>
+						<a href="javascript:;">上一页</a>
+						<a href="javascript:;" class="curr">1</a>
+						<a href="javascript:;">2</a>
+						<a href="javascript:;">3</a>
+						<a href="javascript:;">4</a>
+						<span class="ellipsis">...</span>
+						<a href="javascript:;">100</a>
+						<a href="javascript:;">下一页</a>
+						<a href="javascript:;">末页</a>
+						<input type="text" class="input">
+						<a href="javascript:;">跳转</a>
+					</div>
+                    
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

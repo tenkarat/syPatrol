@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>路线设置</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/public.css" />
+    <link rel="stylesheet" href="css/list_style.css" />
+</head>
+
+<body>
+    <div id="cme-main">
+        <div class="main-content">
+            <div class="main-tab">
+                <div class="label fl curr"><a href="javascript:;">路线设置</a></div>
+                <div class="btn-box fr">
+                    <div class="subbtn fl"><a href="route_setting_add.html" class="blue addMain">新增</a></div>
+                    <div class="subbtn fl"><a href="javascript:;" class="orange">批量删除</a></div>
+                </div>
+            </div>
+
+            <div class="main-table">
+
+                <table class="grade">
+                    <tbody>
+                        <tr>
+                            <td width="80"><span class="checkbox" id="selectAll" style="float: none;">全选</span></td>
+                            <td width="40">序号</td>
+                            <td width="80">路线名称</td>
+                            <td width="100">巡更点名称</td>
+                            <td width="100">操作</td>
+                        </tr>
+                        <tr>
+                            <td class="center"><span class="checkbox" style="float: none;"></span></td>
+                            <td class="center">1</td>
+
+                            <td>路线一</td>
+                            <td class="center">
+                                <span class="field">巡更点1</span>
+                                <span class="field">巡更点2</span>
+                                <span class="field">巡更点3</span>
+                                <span class="field">巡更点4</span>
+                                <span class="field">巡更点5</span>
+                            </td>
+                            <td class="center operation-box">
+                                <a href="route_setting_add.html" class="edit">编辑</a>
+                                <a href="javascript:;" class="delete">删除</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="center"><span class="checkbox" style="float: none;"></span></td>
+                            <td class="center">2</td>
+
+                            <td>路线2</td>
+                            <td class="center">
+                                <span class="field">巡更点1</span>
+                                <span class="field">巡更点2</span>
+                                <span class="field">巡更点3</span>
+                                <span class="field">巡更点4</span>
+                                <span class="field">巡更点5</span>
+                            </td>
+                            <td class="center operation-box">
+                                <a href="route_setting_add.html" class="edit">编辑</a>
+                                <a href="javascript:;" class="delete">删除</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="center"><span class="checkbox" style="float: none;"></span></td>
+                            <td class="center">3</td>
+
+                            <td>路线3</td>
+                            <td class="center">
+                                <span class="field">巡更点1</span>
+                                <span class="field">巡更点2</span>
+                                <span class="field">巡更点3</span>
+                                <span class="field">巡更点4</span>
+                                <span class="field">巡更点5</span>
+                            </td>
+                            <td class="center operation-box">
+                                <a href="javascript:;" class="edit">编辑</a>
+                                <a href="javascript:;" class="delete">删除</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="center"><span class="checkbox" style="float: none;"></span></td>
+                            <td class="center">4</td>
+
+                            <td>路线4</td>
+                            <td class="center">
+                                <span class="field">巡更点1</span>
+                                <span class="field">巡更点2</span>
+                                <span class="field">巡更点3</span>
+                                <span class="field">巡更点4</span>
+                                <span class="field">巡更点5</span>
+                            </td>
+                            <td class="center operation-box">
+                                <a href="javascript:;" class="edit">编辑</a>
+                                <a href="javascript:;" class="delete">删除</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="center"><span class="checkbox" style="float: none;"></span></td>
+                            <td class="center">5</td>
+
+                            <td>路线5</td>
+                            <td class="center">
+                                <span class="field">巡更点1</span>
+                                <span class="field">巡更点2</span>
+                                <span class="field">巡更点3</span>
+                                <span class="field">巡更点4</span>
+                                <span class="field">巡更点5</span>
+                            </td>
+                            <td class="center operation-box">
+                                <a href="javascript:;" class="edit">编辑</a>
+                                <a href="javascript:;" class="delete">删除</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="pages">
+                    <a href="javascript:;">首页</a>
+                    <a href="javascript:;">上一页</a>
+                    <a href="javascript:;" class="curr">1</a>
+                    <a href="javascript:;">2</a>
+                    <a href="javascript:;">3</a>
+                    <a href="javascript:;">4</a>
+                    <span class="ellipsis">...</span>
+                    <a href="javascript:;">100</a>
+                    <a href="javascript:;">下一页</a>
+                    <a href="javascript:;">末页</a>
+                    <input type="text" class="input">
+                    <a href="javascript:;">跳转</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/layer/layer.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript">
+        $(function() {
+
+
+            //复选
+            $(document).on('click', '.checkbox', function() {
+                if ($(this).parents('tr').index() == 0) { //全选
+                    if ($(this).hasClass('curr')) {
+                        $(this).removeClass('curr');
+                        $(this).parents('tr').nextAll().each(function() {
+                            $(this).find('span.checkbox').removeClass('curr');
+                        })
+                    } else {
+                        $(this).addClass('curr');
+                        $(this).parents('tr').nextAll().each(function() {
+                            $(this).find('span.checkbox').addClass('curr');
+                        })
+                    }
+                } else {
+                    if ($(this).hasClass('curr')) {
+                        $(this).removeClass('curr');
+                        $('#selectAll').removeClass('curr');
+                    } else {
+                        $(this).addClass('curr');
+                    }
+                }
+            })
+
+            //指派给谁弹出层
+            $('.main-content').on('click', '.main-tab .btn-box .addMain ', function() {
+                topWin.JLayer.openFrame({
+                    title: '路线名称',
+                    id: 'assignPerson',
+                    url: ['layer_route_name.html', 'no'],
+                    width: 500,
+                    height: 300,
+                    scrollbar: false
+                });
+            });
+
+
+        });
+    </script>
+</body>
+
+</html>
